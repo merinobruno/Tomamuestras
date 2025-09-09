@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Tomador de Muestras</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer>
+        function toggleTab(id, arrowId) {
+            const section = document.getElementById(id);
+            const arrow = document.getElementById(arrowId);
+            section.classList.toggle("hidden");
+            arrow.classList.toggle("rotate-90");
+        }
+    </script>
+</head>
+<body class="bg-gray-100 font-sans flex min-h-screen">
+
+<!-- Menú lateral -->
+<aside class="w-64 bg-gray-800 text-white flex-shrink-0 p-4">
+    <h2 class="text-xl font-bold mb-6 text-center">Dispositivos</h2>
+    <ul class="space-y-2">
+        {% for d in dispositivos %}
+            <li>
+                <a href="?dispositivo={{ d.id }}"
+                   class="block px-3 py-2 rounded hover:bg-gray-700 {% if dispositivo and d.id == dispositivo.id %}bg-gray-700{% endif %}">
+                    {{ d.nombre }}
+                    <span class="block text-sm text-gray-400">{{ d.estado }}</span>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</aside>
+
+<!-- Contenido principal -->
+<main class="flex-1 p-6">
+
+<h1 class="text-4xl font-extrabold mb-6 text-gray-800">Dashboard</h1>
+
+{% if dispositivo %}
+<h2 class="text-2xl font-bold mb-4 text-gray-700">Dispositivo seleccionado: {{ dispositivo.nombre }}</h2>
+
+<div class="space-y-4">
+
+    <!-- Muestras -->
+    <div class="bg-white shadow rounded overflow-hidden">
+        <button class="w-full flex justify-between items-center px-4 py-3 font-bold bg-blue-200 hover:bg-blue-300"
+                onclick="toggleTab('muestras', 'arrow-muestras')">
+            Muestras
+            <span id="arrow-muestras" class="transition-transform duration-300 transform">&#9654;</span>
+        </button>
+        <div id="muestras" class="p-4 hidden overflow-x-auto transition-all duration-300">
+            <table class="min-w-full border border-gray-300 table-auto">
+                <thead class="bg-blue-100 sticky top-0">
+                    <tr>
+                        <th class="px-3 py-2 border">Contenedor</th>
+                        <th class="px-3 py-2 border">Tipo</th>
+                        <th class="px-3 py-2 border">Volumen (ml)</th>
+                        <th class="px-3 py-2 border">Fecha y Hora</th>
+                        <th class="px-3 py-2 border">Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for m in muestras %}
+                        <tr class="odd:bg-gray-50 hover:bg-gray-100">
+                            <td class="px-3 py-1 border">{{ m.contenedor_id }}</td>
+                            <td class="px-3 py-1 border">{{ m.tipo_muestra }}</td>
+                            <td class="px-3 py-1 border">{{ m.volumen_ml }}</td>
+                            <td class="px-3 py-1 border">{{ m.fecha_hora|date:"Y-m-d H:i:s" }}</td>
+                            <td class="px-3 py-1 border">{{ m.estado }}</td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="5" class="text-center px-3 py-2 text-gray-500">No hay muestras</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Mantenimientos -->
+    <div class="bg-white shadow rounded overflow-hidden">
+        <button class="w-full flex justify-between items-center px-4 py-3 font-bold bg-green-200 hover:bg-green-300"
+                onclick="toggleTab('mantenimientos', 'arrow-mantenimientos')">
+            Mantenimientos
+            <span id="arrow-mantenimientos" class="transition-transform duration-300 transform">&#9654;</span>
+        </button>
+        <div id="mantenimientos" class="p-4 hidden overflow-x-auto transition-all duration-300">
+            <table class="min-w-full border border-gray-300 table-auto">
+                <thead class="bg-green-100 sticky top-0">
+                    <tr>
+                        <th class="px-3 py-2 border">Fecha y Hora</th>
+                        <th class="px-3 py-2 border">Tipo de Evento</th>
+                        <th class="px-3 py-2 border">Observaciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for mt in mantenimientos %}
+                        <tr class="odd:bg-gray-50 hover:bg-gray-100">
+                            <td class="px-3 py-1 border">{{ mt.fecha_hora|date:"Y-m-d H:i:s" }}</td>
+                            <td class="px-3 py-1 border">{{ mt.tipo_evento }}</td>
+                            <td class="px-3 py-1 border">{{ mt.observaciones }}</td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="3" class="text-center px-3 py-2 text-gray-500">No hay mantenimientos</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Registro de Estado -->
+    <div class="bg-white shadow rounded overflow-hidden">
+        <button class="w-full flex justify-between items-center px-4 py-3 font-bold bg-red-200 hover:bg-red-300"
+                onclick="toggleTab('registros', 'arrow-registros')">
+            Registro de Estado
+            <span id="arrow-registros" class="transition-transform duration-300 transform">&#9654;</span>
+        </button>
+        <div id="registros" class="p-4 hidden overflow-x-auto transition-all duration-300">
+            <table class="min-w-full border border-gray-300 table-auto">
+                <thead class="bg-red-100 sticky top-0">
+                    <tr>
+                        <th class="px-3 py-2 border">Fecha y Hora</th>
+                        <th class="px-3 py-2 border">Nivel Batería</th>
+                        <th class="px-3 py-2 border">En Línea</th>
+                        <th class="px-3 py-2 border">Última Conexión</th>
+                        <th class="px-3 py-2 border">Código de Error</th>
+                        <th class="px-3 py-2 border">Observaciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for r in registros %}
+                        <tr class="odd:bg-gray-50 hover:bg-gray-100">
+                            <td class="px-3 py-1 border">{{ r.fecha_hora|date:"Y-m-d H:i:s" }}</td>
+                            <td class="px-3 py-1 border">{{ r.nivel_bateria }}%</td>
+                            <td class="px-3 py-1 border">{{ r.en_linea|yesno:"Sí,No" }}</td>
+                            <td class="px-3 py-1 border">{{ r.ultima_conexion|date:"Y-m-d H:i:s" }}</td>
+                            <td class="px-3 py-1 border">{{ r.codigo_error }}</td>
+                            <td class="px-3 py-1 border">{{ r.observaciones }}</td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="6" class="text-center px-3 py-2 text-gray-500">No hay registros de estado</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div> <!-- fin space-y-4 -->
+
+{% endif %} <!-- fin if dispositivo -->
+
+</main>
+</body>
+</html>
