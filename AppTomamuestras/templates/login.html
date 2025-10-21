@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tomamuestras - Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen font-sans">
+
+    <div class="w-full max-w-md bg-white shadow-lg rounded-lg p-8">
+        <h1 class="text-3xl font-bold text-gray-800 text-center mb-6">Iniciar Sesión</h1>
+
+        {% if form.errors %}
+            <div class="bg-red-100 text-red-700 p-3 rounded mb-4 text-sm">
+                Usuario o contraseña incorrectos
+            </div>
+        {% endif %}
+
+        <form method="post" class="space-y-4">
+            {% csrf_token %}
+            
+            <div>
+                <label class="block text-gray-700 mb-1" for="id_username">Usuario</label>
+                <input type="text" name="username" autofocus required
+                       class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" id="id_username">
+            </div>
+
+            <div>
+                <label class="block text-gray-700 mb-1" for="id_password">Contraseña</label>
+                <input type="password" name="password" required
+                       class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" id="id_password">
+            </div>
+
+            <button type="submit"
+                    class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+                Ingresar
+            </button>
+        </form>
+
+        <p class="mt-4 text-center text-gray-500 text-sm">
+            Tomador de Muestras - Sistema de Gestión
+        </p>
+    </div>
+
+</body>
+</html>
