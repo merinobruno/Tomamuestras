@@ -136,3 +136,9 @@ table tbody tr:hover {
 .historylink {
     display: none !important;
 }
+
+body {
+    background-color: #fff;
+    color: #000;
+    font-family: "Inter", sans-serif;
+}

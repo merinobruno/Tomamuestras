@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['tomamuestras.onrender.com', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'django_non_dark_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -131,3 +132,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/dashboard/'
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_URL = '/'
+
+DISABLE_DARK_MODE = True

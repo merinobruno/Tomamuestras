@@ -1,24 +1,22 @@
-/* ===== GENERAL ===== */
 body {
-    background-color: #1c1f26 !important;
-    color: #e6e6e6 !important;
+    background-color: #f4f6fa !important;
+    color: #1c1f26 !important;
     font-family: "Inter", sans-serif !important;
 }
 
 .admin-brand-title {
     font-size: 22px;
     font-weight: 700;
-    color: #fff;
+    color: #1c1f26 !important;
 }
 
-/* ===== SECTION TITLE ===== */
 .admin-section-title {
     font-size: 28px;
     font-weight: 700;
     margin-bottom: 25px;
+    color: #1c1f26 !important;
 }
 
-/* ===== CARDS ===== */
 
 .admin-cards-container {
     display: flex;
@@ -27,35 +25,41 @@ body {
 }
 
 .admin-card {
-    background: #2a2f3a;
+    background: #ffffff !important;
     padding: 24px;
     border-radius: 12px;
     width: 280px;
-    box-shadow: 0px 4px 14px rgba(0,0,0,0.25);
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.08) !important;
     text-decoration: none;
-    color: #fff !important;
+    color: #1c1f26 !important;
     transition: 0.2s ease;
+    border: 1px solid #e5e7eb !important;
 }
 
 .admin-card:hover {
     transform: translateY(-4px);
-    background: #323844;
+    background: #f9fafb !important;
+    box-shadow: 0px 6px 16px rgba(0,0,0,0.12) !important;
 }
 
 /* ===== TABLES ===== */
 table {
-    background-color: #2a2f3a !important;
+    background-color: #ffffff !important;
     border-radius: 10px;
     overflow: hidden;
+    border: 1px solid #e5e7eb !important;
 }
 
 table th {
-    background-color: #3a3f4a !important;
-    color: #ffffff !important;
+    background-color: #f1f3f7 !important;
+    color: #1c1f26 !important;
+    font-weight: 600 !important;
+    border-bottom: 1px solid #e0e0e0 !important;
 }
 
 table td {
-    color: #d8d8d8 !important;
+    color: #1c1f26 !important;
+    border-bottom: 1px solid #e8e8e8 !important;
 }
 
 /* ===== BUTTONS ===== */
@@ -69,6 +73,7 @@ input[type="button"] {
     color: white !important;
     font-weight: 600 !important;
     cursor: pointer !important;
+    transition: 0.2s;
 }
 
 button:hover,

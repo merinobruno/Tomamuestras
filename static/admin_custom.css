@@ -1,0 +1,10 @@
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: light;
+    }
+
+    body, .module, .navbar, #header, #content, .breadcrumbs {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+    }
+}
