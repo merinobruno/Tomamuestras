@@ -16,3 +16,6 @@ __pycache__/
 # Configuración del sistema
 .DS_Store
 *.swp
+
+
+.env

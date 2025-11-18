@@ -58,6 +58,10 @@
 {% if dispositivo %}
 <h2 class="text-2xl font-bold mb-4 text-gray-700">Dispositivo seleccionado: {{ dispositivo.nombre }}</h2>
 
+<a href="{% url 'crear_muestra' dispositivo.id %}"
+    class="mb-2 inline-block bg-blue-600 text-white px-3 py-1 rounded hover:bg-green-700">
+   Nueva muestra
+    </a>
 <div class="space-y-4">
 
     <!-- Muestras -->
@@ -76,6 +80,7 @@
                         <th class="px-3 py-2 border">Volumen (ml)</th>
                         <th class="px-3 py-2 border">Fecha y Hora</th>
                         <th class="px-3 py-2 border">Estado</th>
+                        <th class="px-3 py-2 border">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -86,6 +91,12 @@
                             <td class="px-3 py-1 border">{{ m.volumen_ml }}</td>
                             <td class="px-3 py-1 border">{{ m.fecha_hora|date:"Y-m-d H:i:s" }}</td>
                             <td class="px-3 py-1 border">{{ m.estado }}</td>
+                            <td class="px-3 py-1 border">
+                                <a href="{% url 'eliminar_muestra' m.id %}" class="text-red-600 hover:underline"
+                                onclick="return confirm('¿Eliminar esta muestra?')">
+                                Eliminar
+                                </a>
+                            </td>
                         </tr>
                     {% empty %}
                         <tr>
@@ -97,6 +108,10 @@
         </div>
     </div>
 
+    <a href="{% url 'crear_mantenimiento' dispositivo.id %}"
+    class="mb-2 inline-block bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700">
+   Nuevo mantenimiento
+    </a>
     <!-- Mantenimientos -->
     <div class="bg-white shadow rounded overflow-hidden">
         <button class="w-full flex justify-between items-center px-4 py-3 font-bold bg-green-200 hover:bg-green-300"
@@ -111,6 +126,8 @@
                         <th class="px-3 py-2 border">Fecha y Hora</th>
                         <th class="px-3 py-2 border">Tipo de Evento</th>
                         <th class="px-3 py-2 border">Observaciones</th>
+                        <th class="px-3 py-2 border">Acciones</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -119,6 +136,12 @@
                             <td class="px-3 py-1 border">{{ mt.fecha_hora|date:"Y-m-d H:i:s" }}</td>
                             <td class="px-3 py-1 border">{{ mt.tipo_evento }}</td>
                             <td class="px-3 py-1 border">{{ mt.observaciones }}</td>
+                            <td class="px-3 py-1 border">
+                                <a href="{% url 'eliminar_mantenimiento' mt.id %}" class="text-red-600 hover:underline"
+                                onclick="return confirm('¿Eliminar esta muestra?')">
+                                Eliminar
+                                </a>
+                            </td>
                         </tr>
                     {% empty %}
                         <tr>
@@ -129,7 +152,10 @@
             </table>
         </div>
     </div>
-
+    <a href="{% url 'crear_registro' dispositivo.id %}"
+   class="mb-2 inline-block bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">
+   Nuevo registro
+    </a>
     <!-- Registro de Estado -->
     <div class="bg-white shadow rounded overflow-hidden">
         <button class="w-full flex justify-between items-center px-4 py-3 font-bold bg-red-200 hover:bg-red-300"
@@ -141,12 +167,11 @@
             <table class="min-w-full border border-gray-300 table-auto">
                 <thead class="bg-red-100 sticky top-0">
                     <tr>
-                        <th class="px-3 py-2 border">Fecha y Hora</th>
+                        <th class="px-3 py-2 border">Fecha y Hora de Registro</th>
                         <th class="px-3 py-2 border">Nivel Batería</th>
                         <th class="px-3 py-2 border">En Línea</th>
-                        <th class="px-3 py-2 border">Última Conexión</th>
-                        <th class="px-3 py-2 border">Código de Error</th>
                         <th class="px-3 py-2 border">Observaciones</th>
+                        <th class="px-3 py-2 border">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -155,9 +180,13 @@
                             <td class="px-3 py-1 border">{{ r.fecha_hora|date:"Y-m-d H:i:s" }}</td>
                             <td class="px-3 py-1 border">{{ r.nivel_bateria }}%</td>
                             <td class="px-3 py-1 border">{{ r.en_linea|yesno:"Sí,No" }}</td>
-                            <td class="px-3 py-1 border">{{ r.ultima_conexion|date:"Y-m-d H:i:s" }}</td>
-                            <td class="px-3 py-1 border">{{ r.codigo_error }}</td>
                             <td class="px-3 py-1 border">{{ r.observaciones }}</td>
+                            <td class="px-3 py-1 border">
+                                <a href="{% url 'eliminar_registro' r.id %}" class="text-red-600 hover:underline"
+                                onclick="return confirm('¿Eliminar esta muestra?')">
+                                Eliminar
+                                </a>
+                            </td>
                         </tr>
                     {% empty %}
                         <tr>

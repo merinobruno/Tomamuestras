@@ -1,0 +1,21 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+{% block content %}
+<h1 class="admin-section-title">Administración del Sistema</h1>
+
+<div class="admin-cards-container">
+
+    <a class="admin-card" href="{% url 'admin:auth_user_changelist' %}">
+        <h2>Usuarios</h2>
+        <p>Crear, editar y administrar usuarios del sistema.</p>
+    </a>
+
+    <a class="admin-card" href="{% url 'admin:AppTomamuestras_dispositivo_changelist' %}">
+        <h2>Dispositivos</h2>
+        <p>Monitorear, crear y administrar dispositivos.</p>
+    </a>
+
+</div>
+
+{% endblock %}

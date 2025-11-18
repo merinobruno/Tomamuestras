@@ -1,0 +1,77 @@
+/* ===== GENERAL ===== */
+body {
+    background-color: #1c1f26 !important;
+    color: #e6e6e6 !important;
+    font-family: "Inter", sans-serif !important;
+}
+
+.admin-brand-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+}
+
+/* ===== SECTION TITLE ===== */
+.admin-section-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+/* ===== CARDS ===== */
+
+.admin-cards-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.admin-card {
+    background: #2a2f3a;
+    padding: 24px;
+    border-radius: 12px;
+    width: 280px;
+    box-shadow: 0px 4px 14px rgba(0,0,0,0.25);
+    text-decoration: none;
+    color: #fff !important;
+    transition: 0.2s ease;
+}
+
+.admin-card:hover {
+    transform: translateY(-4px);
+    background: #323844;
+}
+
+/* ===== TABLES ===== */
+table {
+    background-color: #2a2f3a !important;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+table th {
+    background-color: #3a3f4a !important;
+    color: #ffffff !important;
+}
+
+table td {
+    color: #d8d8d8 !important;
+}
+
+/* ===== BUTTONS ===== */
+button,
+input[type="submit"],
+input[type="button"] {
+    background-color: #4f74ff !important;
+    border: none !important;
+    padding: 10px 18px !important;
+    border-radius: 8px !important;
+    color: white !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    background-color: #3d63e0 !important;
+}

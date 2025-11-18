@@ -1,0 +1,17 @@
+.styled-input {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 14px;
+
+    border: 2px solid #2c3e50 !important;   /* Borde hace contraste */
+    border-radius: 8px !important;          /* Redondeado */
+    background-color: #fdfdfd;
+
+    font-size: 16px;
+}
+
+.styled-input:focus {
+    border-color: #3498db !important;   /* Azul al enfocar */
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.4);
+}
