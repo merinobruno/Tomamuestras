@@ -1,40 +1,10 @@
-{% extends "admin/base_site.html" %}
+{% extends "admin/base.html" %}
+{% load static %}
 
-{% block branding %}
-<style>
-    /* Quitar encabezado original */
-    #header, .module caption, div.breadcrumbs {
-        display: none !important;
-    }
+{% block dark-mode-vars %}{% endblock %}
 
-    /* Fondo claro */
-    body {
-        background-color: #f7f7f7 !important;
-        color: #222 !important;
-    }
+{% block extrastyle %}
+{{ block.super }}
 
-    /* Quitar modo oscuro forzado en Django 5 */
-    :root {
-        color-scheme: light !important;
-    }
-</style>
-
-<div class="custom-admin-header" style="
-    width: 100%;
-    background: #ffffff;
-    border-bottom: 1px solid #ddd;
-    padding: 15px 20px;
-">
-    <h1 style="
-        margin: 0;
-        font-size: 24px;
-        font-weight: 600;
-        color: #333;
-    ">
-        Panel de Administración
-    </h1>
-</div>
-{% endblock %}
-
-{% block nav-global %}
+<link rel="stylesheet" href="{% static 'admin/custom_admin.css' %}">
 {% endblock %}

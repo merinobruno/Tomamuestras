@@ -1,9 +1,4 @@
-{% extends "admin/change_form.html" %}
-{% load static %}
-
-{% block extrastyle %}
-<style>
-    html[data-theme="light"], :root {
+html[data-theme="light"], :root {
     color-scheme: light;
 
     --primary: #2563eb;
@@ -416,11 +411,39 @@ fieldset.module h2 {
     gap: 10px;
 }
 
-</style>
-{% endblock %}
+.btn-primary {
 
-{% block content %}
+    background: #2563eb;
+
+    color: white;
+
+    border: none;
+
+    padding: 10px 16px;
+
+    border-radius: 8px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+
+    background: #1d4ed8;
+}
+
+.btn-secondary {
+
+    background: #7a8bad;
+
+    padding: 10px 16px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    color: #111827;
+}
 
 
-{{ block.super }}
-{% endblock %}

@@ -1,0 +1,107 @@
+{% load i18n admin_urls %}
+
+<style>
+/* contenedor de botones */
+
+.custom-submit-row {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 25px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #e5e7eb;
+}
+
+
+/* botón principal */
+
+.btn-primary {
+
+    background: #2563eb;
+
+    color: white;
+
+    border: none;
+
+    padding: 10px 16px;
+
+    border-radius: 8px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+
+    background: #1d4ed8;
+}
+
+
+/* botones secundarios */
+
+.btn-secondary {
+
+    background: #e5e7eb;
+
+    color: #111827;
+
+    border: none;
+
+    padding: 10px 16px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
+
+/* eliminar */
+
+.btn-danger1 {
+
+    background: #dc2626;
+
+    color: white;
+
+    padding: 10px 16px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+}
+
+.btn-danger:hover {
+
+    background: #b91c1c;
+}
+
+</style>
+
+<div class="custom-submit-row">
+
+    {% if show_save %}
+        <button type="submit" class="btn-primary" name="_save">
+            Guardar
+        </button>
+    {% endif %}
+
+    {% if show_save_and_add_another %}
+        <button type="submit" class="btn-secondary" name="_addanother">
+            Guardar y añadir otro
+        </button>
+    {% endif %}
+
+    {% if show_delete_link %}
+        <a href="{{ delete_url }}" style="color:white" class="btn-danger1">
+            Eliminar
+        </a>
+    {% endif %}
+
+</div>

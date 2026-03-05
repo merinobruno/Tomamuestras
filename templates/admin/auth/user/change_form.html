@@ -3,52 +3,420 @@
 
 {% block extrastyle %}
 <style>
-    .card {
-        background: white;
-        border-radius: 16px;
-        padding: 28px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        margin-bottom: 30px;
-    }
+    html[data-theme="light"], :root {
+    color-scheme: light;
 
-    .card h2 {
-        font-size: 22px;
-        font-weight: 700;
-        margin-bottom: 20px;
-    }
+    --primary: #2563eb;
+    --secondary: #1f2937;
 
-    .form-row {
-        margin-bottom: 16px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 18px;
-    }
+    --body-bg: #f3f4f6;
+    --body-fg: #111827;
 
-    input[type="text"],
-    input[type="email"],
-    input[type="password"],
-    select {
-        width: 100%;
-        padding: 12px;
-        border-radius: 12px;
-        background: #fafafa;
-        border: 1px solid #d6d6d6;
-        font-size: 14px;
-    }
+    --header-bg: #1f2937;
+    --header-color: #ffffff;
 
-    .submit-row input {
-        background: #4a90e2 !important;
-        border-radius: 12px !important;
-        padding: 10px 16px !important;
-        border: none !important;
-        font-weight: bold;
-        color: white !important;
-        transition: 0.2s ease;
-    }
+    --breadcrumbs-bg: #111827;
 
-    .submit-row input:hover {
-        background: #357ABD !important;
-    }
+    --link-fg: #2563eb;
+    --link-hover-color: #1d4ed8;
+
+    --hairline-color: #e5e7eb;
+
+    --selected-row: #f9fafb;
+
+    --button-bg: #2563eb;
+    --button-hover-bg: #1d4ed8;
+
+    --default-button-bg: #2563eb;
+    --default-button-hover-bg: #1d4ed8;
+}
+
+html[data-theme="dark"] {
+     display: none;
+}
+
+html {
+    color-scheme: light;
+}
+
+html[data-theme] {
+    color-scheme: light !important;
+}
+
+body {
+    background: #f3f4f6 !important;
+}
+
+/* ===== HEADER ADMIN CORREGIDO ===== */
+
+#header {
+    background: #1f2937 !important;
+    color: white !important;
+
+    height: 60px !important;
+    display: flex !important;
+    align-items: center !important;
+
+    padding: 0 20px !important;
+}
+
+/* título del admin */
+
+#header h1 {
+    font-size: 20px !important;
+    margin: 0 !important;
+}
+
+/* contenedor de usuario */
+
+#user-tools {
+    margin-left: auto !important;
+    font-size: 14px !important;
+}
+
+/* iconos de tema (sol/luna) */
+
+.theme-toggle {
+    display: none !important;
+}
+
+/* ===== FIX LAYOUT FORMULARIOS DJANGO ADMIN ===== */
+
+/* contenedor del formulario */
+#content-main form {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+/* cada fila del formulario */
+.form-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+
+/* labels */
+.form-row label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #111827;
+}
+
+/* inputs */
+.form-row input,
+.form-row textarea,
+.form-row select {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    background: white;
+}
+
+/* textarea altura */
+.form-row textarea {
+    min-height: 90px;
+}
+
+/* checkbox */
+.form-row input[type="checkbox"] {
+    width: auto;
+}
+
+/* botones guardar */
+.submit-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.submit-row input {
+    background: #2563eb;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    color: white;
+}
+
+.submit-row input:hover {
+    background: #1d4ed8;
+}
+
+/* ===== HACER QUE FORMULARIOS SE VEAN COMO EL HOME ===== */
+
+/* contenedor del formulario */
+fieldset.module {
+    background: white !important;
+    border-radius: 12px !important;
+    padding: 20px !important;
+    margin-bottom: 20px !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* filas del formulario */
+.form-row {
+    margin-bottom: 15px;
+}
+
+/* labels */
+.form-row label {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+/* inputs */
+.form-row input,
+.form-row textarea,
+.form-row select {
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    padding: 8px;
+    width: 100%;
+}
+
+/* textarea altura */
+.form-row textarea {
+    min-height: 80px;
+}
+
+/* botones */
+.submit-row {
+    background: transparent !important;
+    border-top: none !important;
+}
+
+.submit-row input {
+    border-radius: 6px;
+    padding: 8px 14px;
+}
+
+.theme-toggle,
+.theme-toggle svg,
+button.theme-toggle {
+    display: none !important;
+}
+
+/* ================================
+   FORMULARIOS USERADMIN / DJANGO
+================================ */
+
+.aligned .form-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+
+/* labels */
+.aligned label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #111827;
+}
+
+/* inputs */
+.aligned input,
+.aligned textarea,
+.aligned select {
+
+    width: 100%;
+
+    padding: 8px 10px;
+
+    border-radius: 8px;
+
+    border: 1px solid #d1d5db;
+
+    background: white;
+}
+
+/* textarea altura */
+.aligned textarea {
+    min-height: 90px;
+}
+
+/* checkbox */
+.aligned input[type="checkbox"] {
+    width: auto;
+}
+
+/* campos agrupados (UserAdmin usa esto) */
+.fieldBox {
+
+    display: flex;
+
+    flex-direction: column;
+
+    margin-bottom: 16px;
+}
+
+/* inputs dentro de fieldBox */
+.fieldBox input,
+.fieldBox textarea,
+.fieldBox select {
+
+    border-radius: 8px;
+
+    border: 1px solid #d1d5db;
+
+    padding: 8px 10px;
+
+    width: 100%;
+}
+
+/* títulos de secciones */
+fieldset.module h2 {
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    margin-bottom: 15px;
+
+    color: #111827;
+}
+
+/* =================================
+   CONTENEDOR DEL FORMULARIO
+================================= */
+
+.admin-form-container {
+
+    max-width: 900px;
+
+    margin: auto;
+
+    padding: 20px;
+}
+
+
+/* título */
+
+.admin-form-title {
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+    margin-bottom: 25px;
+
+    color: #111827;
+}
+
+
+/* tarjeta */
+
+.admin-form-card {
+
+    background: white;
+
+    border-radius: 12px;
+
+    padding: 25px;
+
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+
+/* secciones */
+
+.admin-section {
+
+    margin-bottom: 30px;
+}
+
+.admin-section-title {
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+    margin-bottom: 15px;
+}
+
+
+/* grid estilo dashboard */
+
+.admin-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+
+    gap: 18px;
+}
+
+
+/* campos */
+
+.admin-field {
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+.admin-field label {
+
+    font-weight: 600;
+
+    margin-bottom: 6px;
+
+    color: #111827;
+}
+
+
+/* inputs */
+
+.admin-field input,
+.admin-field select,
+.admin-field textarea {
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 8px;
+
+    padding: 8px 10px;
+
+    font-size: 14px;
+
+    background: white;
+}
+
+
+/* textarea */
+
+.admin-field textarea {
+
+    min-height: 100px;
+}
+
+
+/* ayuda */
+
+.help-text {
+
+    font-size: 12px;
+
+    color: #6b7280;
+
+    margin-top: 4px;
+}
+
+
+/* botones */
+
+.admin-actions {
+
+    margin-top: 20px;
+
+    display: flex;
+
+    gap: 10px;
+}
+
+
 </style>
 {% endblock %}
 

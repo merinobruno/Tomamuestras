@@ -18,7 +18,6 @@ class CustomAdminSite(admin.AdminSite):
             "all": ("admin/custom_admin.css",)
         }
 
-
 custom_admin_site = CustomAdminSite(name="custom_admin")
 
 
@@ -49,7 +48,7 @@ class CustomUserAdmin(UserAdmin):
         return False
 
     fieldsets = (
-        ("Información del Usuario", {
+        ("", {
             "classes": ("wide",),
             "fields": (
                 "username",
@@ -63,7 +62,7 @@ class CustomUserAdmin(UserAdmin):
     )
 
     add_fieldsets = (
-        ("Crear Usuario", {
+        ("", {
             "classes": ("wide",),
             "fields": (
                 "username", "password1", "password2",
@@ -89,7 +88,7 @@ class DispositivoAdmin(admin.ModelAdmin):
     search_fields = ('nombre', 'modelo', 'numero_serie')
 
     fieldsets = (
-        ("Información del Dispositivo", {
+        ("", {
             "classes": ("wide",),
             "fields": (
                 "nombre",

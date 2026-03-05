@@ -1,21 +1,13 @@
 {% extends "admin/base.html" %}
+{% load static %}
 
+{% block extrastyle %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'admin/custom_admin.css' %}">
+<script src="https://cdn.tailwindcss.com"></script>
+{% endblock %}
 {% block branding %}
-<style>
-    /* Ocultar header original */
-    #header {
-        display: none !important;
-    }
-
-    /* Colocar contenido arriba sin espacio */
-    #content {
-        margin-top: 0 !important;
-    }
-    :root {
-        color-scheme: light !important;
-    }
-    
-</style>
-
-
+<h1 id="site-name">
+    <a href="/admin/">Panel de Administración</a>
+</h1>
 {% endblock %}
